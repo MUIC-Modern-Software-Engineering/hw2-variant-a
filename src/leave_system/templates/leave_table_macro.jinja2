@@ -1,0 +1,16 @@
+{% macro leave_table(leave_requests) -%}
+    <table class="table">
+        <tr>
+            <th>User</th>
+            <th>Leave Date</th>
+            <th>Reason</th>
+        </tr>
+        {% for leave_request in leave_requests -%}
+            <tr>
+                <td>{{ leave_request.user.username }}</td>
+                <td>{{ leave_request.date }}</td>
+                <td>{{ leave_request.reason }}</td>
+            </tr>
+        {% endfor -%}
+    </table>
+{% endmacro -%}

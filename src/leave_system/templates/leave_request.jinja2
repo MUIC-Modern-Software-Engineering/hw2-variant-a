@@ -1,0 +1,43 @@
+{% extends "basic_template.jinja2" %}
+{% from "leave_table_macro.jinja2" import leave_table -%}
+{% block title %} Leave System {% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div>
+                    <h1>Add Leave</h1>
+                    <form action="/add_leave" method="post">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Start Date:</label>
+                            <input type="date" name="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reason" class="form-label">Reason:</label>
+                            <input type="text" name="reason" class="form-control" id="reason" required>
+                        </div>
+                        <button type="submit" value="Add Leave" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <hr />
+                <div>
+                    <div>
+                        <h1>My Requests</h1>
+                        <div id="my-request-table">
+                            {{ leave_table(my_leave_requests) }}
+                        </div>
+                    </div>
+                    <div>
+                        <h1>All Requests</h1>
+                        <div id="all-request-table">
+                            {{ leave_table(all_leave_requests) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+    </div>
+{% endblock %}
